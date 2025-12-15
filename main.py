@@ -9,6 +9,7 @@ from config_data.config import Config, load_config
 from dialogs.start.dialogs import start_dialog
 from fluentogram import TranslatorHub
 from handlers.commands import commands_router
+from handlers.other import other_router
 from middlewares.i18n import TranslatorRunnerMiddleware
 from utils.i18n import create_translator_hub
 
@@ -41,6 +42,7 @@ async def main() -> None:
 
     # Регистриуем роутеры в диспетчере
     dp.include_router(commands_router)
+    dp.include_router(other_router)
     dp.include_router(start_dialog)
 
     # Регистрируем миддлварь для i18n
